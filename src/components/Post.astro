@@ -1,16 +1,18 @@
 ---
 import { type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 type Props = {
     post: CollectionEntry<'posts'>;
 }
 
 const {post} = Astro.props;
+const importedImage = import(post.data.image);
 ---
 
 <article>
     <a href={`/blog/${post.slug}`}>
-        <img src={post.data.image} 
+        <Image src={importedImage} 
              width={600}
              height={600 / 1.5}
              alt={post.data.title}
