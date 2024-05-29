@@ -30,14 +30,11 @@ type Props = {
 const {post} = Astro.props;
 const {Content} = await post.render();
 
-const imgSrcArr = post.data.image.split("/");
-const imgSrc = imgSrcArr[imgSrcArr.length - 1];
-const image = import(`../../content/posts/images/${imgSrc}`)
 ---
 <Layout title={post.data.title}>
 	<Main>
 		<H1 text={post.data.title}/>
-        <Image src={image}
+        <Image src={post.data.image}
              width={1024}
              height={1024 / 1.5}
              alt={post.data.title}

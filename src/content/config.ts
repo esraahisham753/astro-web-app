@@ -10,6 +10,6 @@ const postsCollection = defineCollection({
     }),
 });
 
-export const collection = {
+export const collections = {
   posts: postsCollection,
 };
