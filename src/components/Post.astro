@@ -7,12 +7,15 @@ type Props = {
 }
 
 const {post} = Astro.props;
-const importedImage = import(post.data.image);
+
+//const imgSrcArr = post.data.image.split("/");
+//const imgSrc = imgSrcArr[imgSrcArr.length - 1];
+//const importedImage = import(`../content/posts/images/${imgSrc}`);
 ---
 
 <article>
     <a href={`/blog/${post.slug}`}>
-        <Image src={importedImage} 
+        <Image src={post.data.image} 
              width={600}
              height={600 / 1.5}
              alt={post.data.title}

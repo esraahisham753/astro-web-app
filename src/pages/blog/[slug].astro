@@ -4,6 +4,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import H1 from "../../components/H1.astro";
 import Main from "../../components/Main.astro";
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 export const getStaticPaths = async () => {
     const posts = await getCollection("posts");
@@ -28,11 +29,15 @@ type Props = {
 
 const {post} = Astro.props;
 const {Content} = await post.render();
+
+const imgSrcArr = post.data.image.split("/");
+const imgSrc = imgSrcArr[imgSrcArr.length - 1];
+const image = import(`../../content/posts/images/${imgSrc}`)
 ---
 <Layout title={post.data.title}>
 	<Main>
 		<H1 text={post.data.title}/>
-        <img src={post.data.image} 
+        <Image src={image}
              width={1024}
              height={1024 / 1.5}
              alt={post.data.title}
