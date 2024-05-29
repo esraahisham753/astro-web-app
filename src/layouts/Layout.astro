@@ -12,14 +12,14 @@ const { title, description = "This is a community for music producers and enthus
 
 <!doctype html>
 <html lang="en">
-	<head>
-		
-		<ViewTransitions />
+	<head>		
+		<title>{title}</title>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<ViewTransitions />
 		<meta property="og:image" content={image}/>
 	</head>
 	<body class="min-h-screen">
