@@ -1,21 +1,31 @@
-export async function Get({params}) {
-    const id = params.id;
-    const product = await getProduct(id);
+import type { APIRoute } from "astro";
 
-    if (!product) {
+export async function GET() {
+  /*if (!product) {
         return new Response(null, {
             status: 404,
             statusText: "Product not found"
         });
-    }
+    }*/
 
-    return new Response(
-        JSON.stringify(product),
-        {
-            status: 200,
-            headers: {
-                
-            }
-        }
-    )
+  return new Response(
+    JSON.stringify({ message: "Product retrieved successfullt!" }),
+    {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 }
+
+export const POST: APIRoute = async ({ params, request }) => {
+  const body = await request.json();
+
+  return new Response(JSON.stringify(body), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
