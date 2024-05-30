@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import H1 from '../components/H1.astro';
 import Main from '../components/Main.astro';
+import Image from 'astro/components/Image.astro';
+const img = import("../content/posts/images/band.jpg");
 
 export const prerender = true; 
 ---
@@ -9,6 +11,19 @@ export const prerender = true;
 <Layout title="Rhythm Nation Blog">
 	<Main>
 		<H1 text="Rhythm Nation" />
+			<article>
+			<Image src={img} 
+				width={1024}
+				height={1024 / 1.5}
+				alt="article cover"
+				class="rounded-2xl shadow-xl mb-4 aspect-thumbnail object-cover" 
+			/>    
+			<h2 class="text-4xl text-zinc-900 font-semibold inline-block my-4">Read articles from the most talented musicians in the world
+			</h2>	
+			<p class="text-zinc-500 text-2xl line-clamp-2 my-4">
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel tempora saepe mollitia? Et quia optio consequatur nostrum eos recusandae veniam impedit perspiciatis mollitia, voluptates laborum nesciunt ipsam quo aliquid alias!
+			</p>
+		</article>
 	</Main>
 </Layout>
 
